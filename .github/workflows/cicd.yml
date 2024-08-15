@@ -17,7 +17,7 @@ jobs:
         run: docker build -t jemmy33/reactjs-app --build-arg REACT_APP_PUBLISH_KEY='${{ secrets.REACT_APP_PUBLISH_KEY }}' --build-arg REACT_APP_API_URL='${{ secrets.REACT_APP_API_URL }}'  .
       - name: Publish Image to docker hub
         run: docker push jemmy33/reactjs-app:latest 
- 
+
   deploy:
     needs: build
     runs-on: self-hosted 
@@ -25,6 +25,6 @@ jobs:
       - name: Pull image from docker hub
         run: docker pull jemmy33/reactjs-app:latest 
       - name: Delete old container
-        run: docker rm -f reactjs-app-container
+        run: docker rm -f reactjs-app-container || true
       - name: Run Docker Container
-        run: docker run -d -p 3000:80 --name reactjs-app-container jemmy33/reactjs-app
+        run: docker run -d -p 3000:80 --name reactjs-app-container jemmy33/reactjs-app:latest
