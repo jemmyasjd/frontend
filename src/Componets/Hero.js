@@ -7,7 +7,7 @@ const Hero = () => {
         <>
             <div className="container-fluid main-img">
                 <div className="container main-part">
-                    <p>FRESH & DELICIOUS</p>
+                    <p>FRESH</p>
                     <h2>Delicious Seasonal Fruits</h2>
                     <Link to="/shop">
                         <button className="btn1-part1 mt-3 mr-2">Fruit Collection</button>
